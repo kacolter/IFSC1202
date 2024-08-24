@@ -1,0 +1,8 @@
+print("First Timestamp")
+hours= int(input("Number of Hours: "))
+minutes= int(input("Number of Minutes: "))
+seconds= int(input("Number of Seconds: "))
+print("Second Timestamp")
+hours= int(input("Number of Hours: "))
+minutes= int(input("Number of Minutes: "))
+seconds= int(input("Number of Seconds: "))
