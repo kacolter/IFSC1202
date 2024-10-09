@@ -7,5 +7,6 @@ seconds=print(ddmmss.find('"'))
 print(degrees.strip())
 print(minutes.strip())
 print(seconds.strip())
+print()
 
 
