@@ -15,7 +15,7 @@ while product != '':
      product = input.readline()
 while product != '':
      merge.write()
-while producct != '':
+while product != '':
      output.write(line)
      outputrecord += 1
      product = output.readline()
