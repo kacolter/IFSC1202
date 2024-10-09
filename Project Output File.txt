@@ -1,0 +1,5 @@
+with open('/workspaces/IFSC1202/git/Project Input File.txt') as file:
+    print(file.read())
+recordcount=0
+with open('/workspaces/IFSC1202/git/Project Merge File.txt') as file:
+    print(file.read())

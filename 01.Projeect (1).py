@@ -1,0 +1,7 @@
+time=int(input("Enter Length of Time in Days: "))
+years=(time // 365)
+weeks=(time % 365 // 7)
+days=(time - years * 365 - weeks * 7)
+print("Years: {}".format(years))
+print("Weeks: {}".format(weeks))
+print("Days: {}".format(days))
