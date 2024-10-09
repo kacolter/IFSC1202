@@ -1,12 +1,24 @@
+def ParseDegreeString(ddmmss):
+    degreeposition = ddmmss.find(chr(176))
+    degree = float(ddmmss[0:degreeposition])
+    minuteposition = ddmmss.find("'")
+    minute = float(ddmmss[degreeposition+1:minuteposition])
+    secondposition = ddmmss.find('"')
+    second = float(ddmmss[minuteposition+1:secondposition])
+    return degree, minute, second
+
+def DDMMSStoDecimal(degrees, minutes, seconds):
+    degreenum = (degrees, minutes, seconds.find(int))
+    minutenum = (minutes.find(int))
+    secondnum = (seconds.find(int))
+    return
+
 inputfile=open("Project Angles Input.txt")
+outputfile = open("Project Angles Output.txt", "w")
 line=inputfile.readline()
-ddmmss=str()
-degrees=print(ddmmss.find('°'))
-minutes=print(ddmmss.find("'"))
-seconds=print(ddmmss.find('"'))
-print(degrees.strip())
-print(minutes.strip())
-print(seconds.strip())
-print()
-
-
+while line != "":
+    degrees, minutes, seconds = ParseDegreeString(line)
+    decimalangle = DDMMSStoDecimal(degrees, minutes, seconds)
+    
+    line=inputfile.readline()
+inputfile.close()
