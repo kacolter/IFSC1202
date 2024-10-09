@@ -8,9 +8,9 @@ def ParseDegreeString(ddmmss):
     return degree, minute, second
 
 def DDMMSStoDecimal(degrees, minutes, seconds):
-    degreenum = degrees.find(degree)
-    minutenum = minutes.find(int)
-    secondnum = seconds.find(int)
+    degreenum = degrees/60
+    minutenum = minutes
+    secondnum = seconds
     return degreenum, minutenum, secondnum
 
 inputfile=open("Project Angles Input.txt")
