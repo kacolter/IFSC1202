@@ -8,4 +8,4 @@ distinct = 0
 for x in range(length):
     if x == 0 or list[x] != list[x - 1]:
         distinct += 1
-print(distinct)
+print("Number of Distinct Elements: {}".format(distinct))
