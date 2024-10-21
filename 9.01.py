@@ -4,8 +4,18 @@ a = []
 for i in range(int(m)):
     line = input("Enter a line of data: ")
     a.append(line)
+    maximum = max(a)
 print(a)
-maximum = max(a)
+
+
+for j in range(len(a[i]):
+        print(a.index(maximum))
+
+
+
+for j in range(len(a[i])):
+    print(a.index(maximum))
+
 index = a.index(maximum)
 print(maximum)
 print(index)
