@@ -1,17 +1,27 @@
-input_string = input("Enter integers separated by spaces: ")
+def print_list(a):
+    for row in a:
+        print(' '.join(map(str, row)))
 
-# Split the input string into a list of strings
-input_list = input_string.split()
+def swap_columns(a, i, j):
+    for row in a:
+        row[i], row[j] = row[j], row[i]
 
-# Initialize an empty list to store the integer values
-values = []
+def read_numbers_from_file(filename):
+    with open(filename, 'r') as file:
+        return [list(map(int, line.split())) for line in file]
 
-# Load the values into a list by converting them to integers
-n = len(input_list)
-for i in range(n):
-    values.append(int(input_list[i]))
+# Main execution
+filename = '09.02.txt'
+a = read_numbers_from_file(filename)
 
-# Print the values that are odd
-for i in range(n):
-    if values[i] % 2 != 0:  # Check if the number is odd
-        print(values[i])
+print("Original List:")
+print_list(a)
+
+# Prompt for column numbers to swap
+i = int(input("Enter the first column number to swap (0-indexed): "))
+j = int(input("Enter the second column number to swap (0-indexed): "))
+
+swap_columns(a, i, j)
+
+print("List after swapping columns:")
+print_list(a)
