@@ -3,11 +3,17 @@ class Pet ():
         self.Name = name
         self.Type = type
         self.Age = age
-filex = open("10.01 pets.txt")
+filex = open("/workspaces/IFSC1202/10.01 Pets.txt")
 filex_read = filex.readline()
-while readx != "":
-    file_split = filex.split(",")
+while filex_read != "":
+    file_split = filex_read.split(",")
+    pet1 = Pet()
+    filex_read = filex.readline()
+    pet2 = Pet()
+    filex_read = filex.readline()
+    pet3 = Pet()
 
-pet1 = Pet(filex_read)
-pet2 = Pet(filex_read)
-pet3 = Pet(filex_read)
+print("Name".format(self.Name), "Type".format(self.Type), "Age".format(self.Age))
+print(pet1.Name, pet1.Type, pet1.Age())
+print(pet2.Name, pet2.Type, pet2.Age())
+print(pet3.Name, pet3.Type, pet3.Age())
