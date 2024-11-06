@@ -1,40 +1,47 @@
 class Student():
-    def __init__(self, firstname = "", lastname = "", tnumber = "", scores = 0):
+    def __init__(self, firstname, lastname, tnumber, scores):
         self.FirstName = firstname
         self.LastName = lastname
         self.TNumber = tnumber
         self.Scores = scores
     def RunningAverage(self):
-        while self.Scores != "":
-            runningaverage = (self.Scores + self.Scores + self.Scores) / 3
+        total = 0
+        count = 0
+        for i in range(len(self.Scores)):
+            if self.Scores[i].strip() != "":
+                total = total + float(self.Scores[i])
+                count = count + 1
+        runningaverage = total / count
         return runningaverage
     def TotalAverage(self):
-        if self.Scores == "":
-            self.Scores = 0
-        totalaverage = (self.Scores + self.Scores + self.Scores +self.Scores) / 3
-        return totalaverage 
+        total = 0
+        count = 0
+        for i in range(len(self.Scores)):
+            if self.Scores[i].strip() != "":
+                total = total + float(self.Scores[i])
+        count = len(self.Scores)
+        totalaverage = total / count
+        return totalaverage
     def LetterGrade(self):
-        if self.TotalAverage >= 90:
+        TotalAverage = self.TotalAverage()
+        if TotalAverage >= 90:
             lettergrade = "A"
-        elif self.TotalAverage >= 80 and self.TotalAverage < 90:
+        elif TotalAverage >= 80 and TotalAverage < 90:
             lettergrade = "B"
-        elif self.TotalAverage >= 70 and self.TotalAverage <80:
+        elif TotalAverage >= 70 and TotalAverage <80:
             lettergrade = "C"
-        elif self.TotalAverage >= 60 and self.TotalAverage < 70:
+        elif TotalAverage >= 60 and TotalAverage < 70:
             lettergrade = "D"
-        elif self.TotalAverage < 60:
+        elif TotalAverage < 60:
             lettergrade = "F"
         return lettergrade
 
-studentscores = open('10.Project Student Scores.txt')
-x = studentscores.readline()
-y = x.split(",")
-
+print("{:>10s} {:>10s} {:>10s} {:>10s} {:>10s} {:>10s}".format("First","Last","ID","Running", "Semester","Letter"))
+print("{:>10s} {:>10s} {:>10s} {:>10s} {:>10s} {:>10s}".format("Name","Name","Number","Average", "Average","Grade"))
+print("{:>10s} {:>10s} {:>10s} {:>10s} {:>10s} {:>10s}".format(10 * "-",10 * "-",10 * "-",10 * "-", 10 * "-",10 * "-"))
 with open('10.Project Student Scores.txt') as file:
     for line in file: 
-        while line != "":
-            x = file.readline()
-            y = x.split(",")
-            myStudent = Student()
-            x = file.readline()
-
+        y = line.split(",")
+        myStudent = Student(y[0].strip(),y[1].strip(),y[2].strip(),y[3:])
+        print("{:>10s} {:>10s} {:>10s} {:10.2f} {:10.2f} {:>10s}".format(myStudent.FirstName, myStudent.LastName, myStudent.TNumber, myStudent.RunningAverage(), myStudent.TotalAverage(), myStudent.LetterGrade()))
+ 
