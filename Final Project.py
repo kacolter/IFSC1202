@@ -43,3 +43,7 @@ class UserList():
         index = self.find_user(username)
         del self.UserList[index]
 
+myUserList = UserList()
+myUserList.read_user_file("Final Project Passwords.txt")
+while UserList() != " ":
+    
