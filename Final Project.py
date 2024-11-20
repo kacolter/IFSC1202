@@ -62,8 +62,7 @@ choice = int(input("Enter Selection: "))
 while choice != 0:
     if choice == 1:
         name = input("Enter a Username: ")
-        found = myUserList.find_username(name)
-        if name == found :
+        if myUserList.find_username(name) != -1:
             print("Username Already Exists.")
         else:
             input("Enter a Password: ")
