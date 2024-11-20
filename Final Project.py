@@ -7,13 +7,14 @@ class UserList():
     def __init__(self,filename):
         self.UserList = []
         self.FileName = filename
-    def read_user_file(self, filename, username, password):
+    def read_user_file(self, filename):
         userfile = open(filename)
         x = userfile.readline()
-        while x != " ":
+        while x != "":
             y = x.split(",")
-            myUser = User(username, password)
-            self.UserList.append(myUser).split(",")
+            myUser = User(y[0], y[1])
+            self.UserList.append(myUser)
+            x = userfile.readline()
         userfile.close()
     def write_user_file(self, filename):
         import csv
@@ -27,9 +28,7 @@ class UserList():
             print("{:>10s} {:>10s}".format(self.UserList[i].UserName, self.UserList[i].Password))
     def find_username(self,username):
         for i in range(len(self.UserList)):
-#            index = UserList.index(username)
             if self.UserList[i].UserName == username:
-#                return index
                return i
         return -1
     def change_password(self, username, password):
@@ -62,12 +61,12 @@ choice = int(input("Enter Selection: "))
 
 while choice != 0:
     if choice == 1:
-        name = print("Enter a User Name: ")
+        name = input("Enter a Username: ")
         found = myUserList.find_username(name)
-        if name == found:
+        if name == found :
             print("Username Already Exists.")
         else:
-            print("Enter a Password: ")
+            input("Enter a Password: ")
 #           test password strength
             myUserList.add_user()
             print("User Added.")

@@ -23,25 +23,26 @@ class Triangle():
         num = math.sqrt(value)
         return num
     def angles(self):
-        beforeA = (((self.S1 ** 2) + (self.S2 ** 2) + (self.S3 ** 2)) / 2 * self.S2 * self.S3) * (180 / pi)
-        beforeB = (((self.S1 ** 2) + (self.S2 ** 2) + (self.S3 ** 2)) / 2 * self.S1 * self.S3) * (180 / pi)
-        beforeC = (((self.S1 ** 2) + (self.S2 ** 2) + (self.S3 ** 2)) / 2 * self.S1 * self.S2) * (180 / pi)
-        angleA = acos(beforeA)
-        angleB = acos(beforeB)
-        angleC = acos(beforeC)
+        beforeA = (((self.S1 ** 2) + (self.S2 ** 2) + (self.S3 ** 2)) / (2 * self.S2 * self.S3))
+        beforeB = (((self.S1 ** 2) + (self.S2 ** 2) + (self.S3 ** 2)) / (2 * self.S1 * self.S3))
+        beforeC = (((self.S1 ** 2) + (self.S2 ** 2) + (self.S3 ** 2)) / (2 * self.S1 * self.S2))
+        angleA = acos(beforeA) * (180 / pi)
+        angleB = math.acos(beforeB) * (180 / pi)
+        angleC = math.acos(beforeC) * (180 / pi)
         return angleA, angleB, angleC
 
-filex = open("Exam Three Triangle.txt")
+filex = open("/workspaces/IFSC1202/ Exam Three Triangle.txt")
 x = filex.readline()
 list = []
-while x != " ":
+TriangleList = []
+while x != "":
     y = x.split(",")
     list.append(y)
-    TriangleList = []
-    myTriangle = Triangle()
+    myTriangle = Triangle(float(y[0]), float(y[1]), float(y[2]))
     TriangleList.append(myTriangle)
     x = filex.readline()
 
 for i in range(len(TriangleList)):
     print("{:>10s} {:>10s} {:>10s} {:>10s} {:>10s} {:>10s} {:>10s} {:>10s} {:>10s}".format("Type","Side 1","Side 2","Side 3", "Perimeter","Area", "Angle 1", "Angle 2", "Angle 3"))
-    print("{:>10s} {:>10f} {:>10f} {:>10.2f} {:>10.2f} {:>10f} {:>10f} {:>10f} {:>10f}".format(Triangle().type, TriangleList[i][0], TriangleList[i][2], TriangleList[i][3], Triangle().perimeter, Triangle().area, Triangle().angles))
+    print("{:>10s} {:>10f} {:>10f} {:>10.2f} {:>10.2f} {:>10f} {:>10f} {:>10f} {:>10f}".format(TriangleList[i].type(), TriangleList[i].S1, TriangleList[i].S2, TriangleList[i].S3, TriangleList[i].perimeter(), TriangleList[i].area(), TriangleList[i].angles()))
+   
