@@ -65,25 +65,23 @@ while choice != 0:
         if myUserList.find_username(name) != -1:
             print("Username Already Exists.")
         else:
-            input("Enter a Password: ")
+            pas = input("Enter a Password: ")
 #           test password strength
-            myUserList.add_user()
+            myUserList.add_user(name, pas)
             print("User Added.")
     if choice == 2:
-        name = print("Enter a Username: ")
-        found = myUserList.find_username(name)
-        if name != found:
+        name = input("Enter a Username: ")
+        if myUserList.find_username(name) == -1:
             print("Username Not Found.")
         else:
             myUserList.delete_user(name)
             print("User Deleted.")
     if choice == 3:
-        name = print("Enter a Username: ")
-        found = myUserList.find_username(name)
-        if name != found:
+        name = input("Enter a Username: ")
+        if myUserList.find_username(name) == -1:
             print("Username Not Found.")
         else:
-            password = print("Enter a Password: ")
+            password = input("Enter a Password: ")
 #           test password strength
             myUserList.change_password(password)
             print("Password Changed")
