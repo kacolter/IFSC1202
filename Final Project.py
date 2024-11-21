@@ -48,13 +48,13 @@ class UserList():
         points = 0
         if len(password) >= 8:
             points += 1
-        if any(char.isupper() for char in password) == "True":
+        if any(char.isupper() for char in password):
             points += 1
-        if any(char.islower() for char in password) == "True":
+        if any(char.islower() for char in password):
             points += 1
-        if any(char.isdigit() for char in password) == "True":
+        if any(char.isdigit() for char in password):
             points += 1
-        if any(char in string.punctuation for char in password) == "True":
+        if any(char in string.punctuation for char in password):
             points += 1
         return points
 
@@ -81,40 +81,49 @@ while choice != 0:
             print("Username Already Exists.")
         else:
             pas = input("Enter a Password: ")
-            if myUserList.strength(pas) >= 5:
-                myUserList.add_user(name, pas)
-                print("User Added.")
+            if myUserList.strength(pas) >= 5:                    
+                myUserList.change_password(name, pas)
+                print("Password changed.")
             else:
                 while myUserList.strength(pas) < 5:
+                    print("This password isn't strong enough- strength {}".format(myUserList.strength(pas)))
+                    print("Password must have at least 8 characters, one special character, one uppercase letter, one lowercase letter, and one number.")
                     pas = input("Enter a Password: ")
-    if choice == 2:
+                print("Password changed.")
+    elif choice == 2:
         name = input("Enter a Username: ")
         if myUserList.find_username(name) == -1:
             print("Username Not Found.")
         else:
             myUserList.delete_user(name)
             print("User Deleted.")
-    if choice == 3:
+    elif choice == 3:
         name = input("Enter a Username: ")
         if myUserList.find_username(name) == -1:
             print("Username Not Found.")
         else:
             pas = input("Enter a Password: ")
-            if myUserList.strength(pas) >= 5:
-                myUserList.change_password(pas)
+            if myUserList.strength(pas) >= 5:                    
+                myUserList.change_password(name, pas)
                 print("Password changed.")
             else:
-                pas = input("Enter a Password: ")
-    if choice == 4:
+                while myUserList.strength(pas) < 5:
+                    print("This password isn't strong enough- strength {}".format(myUserList.strength(pas)))
+                    print("Password must have at least 8 characters, one special character, one uppercase letter, one lowercase letter, and one number.")
+                    pas = input("Enter a Password: ")
+                print("Password changed.")
+    elif choice == 4:
         myUserList.display_user_list()
-    if choice == 5:
+    elif choice == 5:
         myUserList.write_user_file("Final Project Passwords.txt")
         print("Changes Saved.")
-    if choice == 6:
+    elif choice == 6:
         break
-    if choice != 1 or choice != 2 or choice != 3 or choice != 4 or choice != 5 or choice != 6:
+    else:
         print("Invalid Selection.")
+
 
     print()
     menu()
+
     choice = int(input("Enter Selection: "))
